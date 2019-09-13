@@ -15,4 +15,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const task = req.body;
+
+  Tasks.addTask(task)
+    .then(task => {
+      tasks.forEach(task => (task.completed = Boolean(task.completed)));
+      return res.status(200).json(task);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: "Failed to post task." });
+    });
+});
+
 module.exports = router;
