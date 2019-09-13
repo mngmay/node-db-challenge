@@ -3,7 +3,7 @@ exports.seed = function(knex) {
     {
       id: 1,
       description: "create GitHub repo",
-      notes: "",
+      notes: null,
       completed: true,
       project_id: 1
     },
@@ -24,7 +24,7 @@ exports.seed = function(knex) {
     {
       id: 4,
       description: "buy supplies",
-      notes: "",
+      notes: null,
       completed: false,
       project_id: 2
     },

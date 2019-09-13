@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   Tasks.getTasks()
     .then(tasks => {
+      tasks.forEach(task => (task.completed = Boolean(task.completed)));
       return res.status(200).json(tasks);
     })
     .catch(err => {
