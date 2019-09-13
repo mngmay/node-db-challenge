@@ -16,6 +16,14 @@ exports.up = function(knex) {
         .defaultTo(false);
     })
 
+    .createTable("resources", tbl => {
+      tbl.increments();
+
+      tbl.string("name", 255).notNullable();
+
+      tbl.string("description", 255);
+    })
+
     .createTable("tasks", tbl => {
       tbl.increments();
 
@@ -27,6 +35,15 @@ exports.up = function(knex) {
         .boolean("completed")
         .notNullable()
         .defaultTo(false);
+
+      // FK
+      tbl
+        .integer("project_id")
+        .unsigned()
+        .references("id")
+        .inTable("projects")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     });
 };
 
