@@ -7,6 +7,10 @@ const router = express.Router();
 router.get("/", (req, res) => {
   Projects.getProjects()
     .then(projects => {
+      projects.forEach(
+        projects => (projects.completed = Boolean(projects.completed))
+      );
+
       return res.status(200).json(projects);
     })
     .catch(err => {
