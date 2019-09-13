@@ -25,7 +25,7 @@ function findResourceById(id) {
 function addResource(resource) {
   return db("resources")
     .insert(resource)
-    .then(resources => {
-      return resources;
+    .then(id => {
+      return findResourceById(id[0]);
     });
 }
