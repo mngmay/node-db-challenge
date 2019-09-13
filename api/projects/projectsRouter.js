@@ -18,4 +18,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const project = req.body;
+
+  Projects.addProject(project)
+    .then(project => {
+      project.completed = Boolean(project.completed);
+      return res.status(200).json(project);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: "Failed to post project." });
+    });
+});
+
 module.exports = router;

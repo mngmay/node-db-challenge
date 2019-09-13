@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
 
   Tasks.addTask(task)
     .then(task => {
-      tasks.forEach(task => (task.completed = Boolean(task.completed)));
+      task.completed = Boolean(task.completed);
       return res.status(200).json(task);
     })
     .catch(err => {
