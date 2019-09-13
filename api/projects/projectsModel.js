@@ -10,16 +10,16 @@ function getProjects() {
   return db("projects");
 }
 
-function findProjectById(id) {
-  return db("projects")
-    .where({ id: id })
-    .then(project => {
-      if (project) {
-        return project[0];
-      } else {
-        return null;
-      }
-    });
+async function findProjectById(id) {
+  return [
+    await db("projects as p")
+      .where({ id })
+      .first(),
+    await db("tasks as t").where({ project_id: id }),
+    await db("project_resources as pr")
+      .where({ project_id: id })
+      .join("resources as r", "r.id", "pr.resource_id")
+  ];
 }
 
 function addProject(project) {

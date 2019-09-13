@@ -23,8 +23,10 @@ router.get("/:id", (req, res) => {
 
   Projects.findProjectById(id)
     .then(project => {
+      project[0].tasks = project[1];
+      project[0].resources = project[2];
       project.completed = Boolean(project.completed);
-      return res.status(200).json(project);
+      return res.status(200).json(project[0]);
     })
     .catch(err => {
       return res.status(500).json({ message: "Failed to get project." });
