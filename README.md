@@ -40,11 +40,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+Relational Databases is a type of database that utilizes tables and the relational model of data. SQL stands for Structured Query Language - the language commonly used for querying databases.
+
 - [ ] Why do tables need a `primary key`?
+
+Resources need a unique identifier. A PK also helps to link tables together in joins.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+Foreign Key.
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+An intemediary table that uses the Primary Keys of the 2 tables as Foreign Keys.
 
 ## Minimum Viable Product
 
